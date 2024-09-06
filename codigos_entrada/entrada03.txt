@@ -1,0 +1,7 @@
+main begin-1
+    begin
+        int: begin2;
+        while(3 > 2) do
+            be = be + 2;
+    end
+    

@@ -1,0 +1,12 @@
+main Primeiro_Programa
+    begin
+        int: x, y, z;
+        char: a;
+
+        x := 10;
+        y := 8;
+        if(x >= y) then
+            {comentario 120}
+            x := 2 + (1 * 3)**5;
+    end
+    

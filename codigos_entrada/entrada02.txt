@@ -1,0 +1,18 @@
+main Teste
+    begin
+        int: a, b;
+        char: c;
+        float: d, e;
+
+        a := 10;
+        b := a ** 5;
+        c := 'A';
+        d := 4.5;
+        e := -1.4E-3;
+
+        if(a >= e) then
+            e := e + a;
+        else
+            e := a;
+    end
+    

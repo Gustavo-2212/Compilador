@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build scanner",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "analex/scanner.cpp",
+                "analex/analex.cpp",
+                "analex/tabela_simbolos.cpp",
+                "gera_tabela_dt/tabela.cpp",
+                "analex/anasin.cpp",
+                "-o",
+                "analex/anasin"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
