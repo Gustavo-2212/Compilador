@@ -36,6 +36,7 @@ public:
     unsigned int hash(const std::string &chave);
     void inserir(const std::string &chave, const registro &valor);
     registro *buscar(const std::string &chave);
+    void visualizar() const;
     void inicializar();
 };
 

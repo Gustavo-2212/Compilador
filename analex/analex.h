@@ -62,6 +62,7 @@ extern void inicializar_tabela_simbolos(void);
 extern void setID(const std::string &lexema);
 extern void setInt(const std::string &lexema);
 extern void setFloat(const std::string &lexema);
+extern void setChar(const std::string &lexema);
 extern void setExp(const std::string &lexema);
 extern void erro(void);
 extern void restart(void);

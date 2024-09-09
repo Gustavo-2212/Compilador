@@ -112,6 +112,16 @@ void setExp(const std::string &lexema) {
     token(TOK_CONST_NUM, std::to_string(indice));
 }
 
+void setChar(const std::string &lexema) {
+    registro reg = { .lexema=lexema, .tipo=TOK_CONST_CHAR, .tipo_dado="char" };
+
+    unsigned int indice = tabela_simbolos.hash(lexema);
+
+    tabela_simbolos.inserir(lexema, reg);
+
+    token(TOK_CONST_CHAR, std::to_string(indice));
+}
+
 void restart() {
     retorna_token();
 }

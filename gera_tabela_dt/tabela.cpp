@@ -225,7 +225,8 @@ void acoes(int estado) {
             break;
 
         case 67:
-            token(TOK_CONST_CHAR, Lexema);
+            // token(TOK_CONST_CHAR, Lexema);
+            setChar(Lexema);
             break;
 
         case 32:

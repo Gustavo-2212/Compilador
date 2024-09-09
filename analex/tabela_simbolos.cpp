@@ -1,5 +1,5 @@
 #include "tabela_simbolos.h"
-
+#include <iostream>
 
 hash_table::hash_table() : tabela(TAMANHO, nullptr) {}
 
@@ -26,6 +26,7 @@ void hash_table::inserir(const std::string &chave, const registro &valor) {
     unsigned int indice = hash(chave);
     hash_node *node = new hash_node(chave, valor);
     node->proximo = tabela[indice];
+    tabela[indice] = node;
 }
 
 registro *hash_table::buscar(const std::string &chave) {
