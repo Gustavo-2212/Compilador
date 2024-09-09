@@ -61,65 +61,91 @@ void setID(const std::string &lexema) {
 }
 
 void setInt(const std::string &lexema) {
-    vlr valor = { .valor_int=std::stoi(lexema) };
-    
-    registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="int" };
-
+    registro *reg = tabela_simbolos.buscar(lexema);
     unsigned int indice = tabela_simbolos.hash(lexema);
+    
+    if(reg != nullptr) {
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
+    else {
+        vlr valor = { .valor_int=std::stoi(lexema) };
 
-    tabela_simbolos.inserir(lexema, reg);
+        registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="int" };
 
-    token(TOK_CONST_NUM, std::to_string(indice));
+        tabela_simbolos.inserir(lexema, reg);
+
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
 }
 
 void setFloat(const std::string &lexema) {
-    vlr valor = { .valor_float=std::stof(lexema) };
-
-    registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="float" };
-
+    registro *reg = tabela_simbolos.buscar(lexema);
     unsigned int indice = tabela_simbolos.hash(lexema);
 
-    tabela_simbolos.inserir(lexema, reg);
+    if(reg != nullptr) {
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
+    else {
+        vlr valor = { .valor_float=std::stof(lexema) };
 
-    token(TOK_CONST_NUM, std::to_string(indice));
+        registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="float" };
+
+        tabela_simbolos.inserir(lexema, reg);
+
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
+
 }
 
 void setExp(const std::string &lexema) {
-    std::string parte_nominal;
-    std::string parte_expo;
-    int i = 0;
 
-    while(lexema[i] != 'E') {
-        parte_nominal += lexema[i];
-        i++;
-    }
-    i++;
-    while(i < lexema.size()) {
-        parte_expo += lexema[i];
-        i++;
-    }
-
-    float tmp = std::stof(parte_nominal);
-    int expo = std::stoi(parte_expo);
-
-    vlr valor = { .valor_float=(float) (tmp * (std::pow(10.0, expo))) };
-    registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="float" };
-
+    registro *reg = tabela_simbolos.buscar(lexema);
     unsigned int indice = tabela_simbolos.hash(lexema);
 
-    tabela_simbolos.inserir(lexema, reg);
+    if(reg != nullptr) {
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
+    else {
+        std::string parte_nominal;
+        std::string parte_expo;
+        int i = 0;
 
-    token(TOK_CONST_NUM, std::to_string(indice));
+        while(lexema[i] != 'E') {
+            parte_nominal += lexema[i];
+            i++;
+        }
+        i++;
+        while(i < lexema.size()) {
+            parte_expo += lexema[i];
+            i++;
+        }
+
+        float tmp = std::stof(parte_nominal);
+        int expo = std::stoi(parte_expo);
+
+        vlr valor = { .valor_float=(float) (tmp * (std::pow(10.0, expo))) };
+        registro reg = { .lexema=lexema, .tipo=TOK_CONST_NUM, .valor=valor, .tipo_dado="float" };
+
+        tabela_simbolos.inserir(lexema, reg);
+
+        token(TOK_CONST_NUM, std::to_string(indice));
+    }
 }
 
 void setChar(const std::string &lexema) {
-    registro reg = { .lexema=lexema, .tipo=TOK_CONST_CHAR, .tipo_dado="char" };
-
+    registro *reg = tabela_simbolos.buscar(lexema);
     unsigned int indice = tabela_simbolos.hash(lexema);
 
-    tabela_simbolos.inserir(lexema, reg);
+    if(reg != nullptr) {
+        token(TOK_CONST_CHAR, std::to_string(indice));
+    }
+    else {
+        registro reg = { .lexema=lexema, .tipo=TOK_CONST_CHAR, .tipo_dado="char" };
 
-    token(TOK_CONST_CHAR, std::to_string(indice));
+        tabela_simbolos.inserir(lexema, reg);
+
+        token(TOK_CONST_CHAR, std::to_string(indice));
+    }
 }
 
 void restart() {
