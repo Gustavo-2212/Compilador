@@ -36,6 +36,7 @@ registro *hash_table::buscar(const std::string &chave) {
         if(node->chave == chave) {
             return &node->valor;
         }
+        node = node->proximo;
     }
 
     return nullptr;
