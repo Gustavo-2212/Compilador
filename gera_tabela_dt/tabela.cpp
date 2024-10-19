@@ -92,88 +92,88 @@ void acoes(int estado) {
     switch(estado) {
         
         case 101: // begin
-            token(TOK_BEGIN, atributo);
+            token(TOK_BEGIN, atributo, linha, coluna_inicio);
             break;
         
         case 88: // end
-            token(TOK_END, atributo);
+            token(TOK_END, atributo, linha, coluna_inicio);
             break;
         
         case 95:
-            token(TOK_MAIN, atributo);
+            token(TOK_MAIN, atributo, linha, coluna_inicio);
             break;
         
         case 71:
-            token(TOK_IF, atributo);
+            token(TOK_IF, atributo, linha, coluna_inicio);
             break;
         
         case 96:
-            token(TOK_THEN, atributo);
+            token(TOK_THEN, atributo, linha, coluna_inicio);
             break;
         
         case 98:
-            token(TOK_ELSE, atributo);
+            token(TOK_ELSE, atributo, linha, coluna_inicio);
             break;
         
         case 68:
-            token(TOK_DO, atributo);
+            token(TOK_DO, atributo, linha, coluna_inicio);
             break;
         
         case 100:
-            token(TOK_WHILE, atributo);
+            token(TOK_WHILE, atributo, linha, coluna_inicio);
             break;
         
         case 105:
-            token(TOK_REPEAT, atributo);
+            token(TOK_REPEAT, atributo, linha, coluna_inicio);
             break;
         
         case 86:
             atributo = "int";
-            token(TOK_INT, atributo);
+            token(TOK_INT, atributo, linha, coluna_inicio);
             break;
         
         case 102:
             atributo = "float\0";
-            token(TOK_FLOAT, atributo);
+            token(TOK_FLOAT, atributo, linha, coluna_inicio);
             break;
         
         case 94:
             atributo = "char\0";
-            token(TOK_CHAR, atributo);
+            token(TOK_CHAR, atributo, linha, coluna_inicio);
             break;
 
         case 103:
-            token(TOK_UNTIL, atributo);
+            token(TOK_UNTIL, atributo, linha, coluna_inicio);
             break;
         
         case 46:
             atributo = "EQ\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 51:
             atributo = "NE\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 73:
             atributo = "GE\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 59:
             atributo = "GT\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 48:
             atributo = "LE\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 47:
             atributo = "LT\0";
-            token(TOK_OPREL, atributo);
+            token(TOK_OPREL, atributo, linha, coluna_inicio);
             break;
 
         case 31:
@@ -181,47 +181,47 @@ void acoes(int estado) {
             break;
 
         case 13:
-            token(TOK_PAR_ESQ, atributo);
+            token(TOK_PAR_ESQ, atributo, linha, coluna_inicio);
             break;
 
         case 23:
-            token(TOK_PAR_DIR, atributo);
+            token(TOK_PAR_DIR, atributo, linha, coluna_inicio);
             break;
 
         case 7:
-            token(TOK_PONTO_VIRG, atributo);
+            token(TOK_PONTO_VIRG, atributo, linha, coluna_inicio);
             break;
 
         case 6:
-            token(TOK_VIRG, atributo);
+            token(TOK_VIRG, atributo, linha, coluna_inicio);
             break;
 
         case 52:
-            token(TOK_DOIS_PONTO, atributo);
+            token(TOK_DOIS_PONTO, atributo, linha, coluna_inicio);
             break;
 
         case 53:
-            token(TOK_ATRIB, atributo);
+            token(TOK_ATRIB, atributo, linha, coluna_inicio);
             break;
 
         case 20:
-            token(TOK_SUM, atributo);
+            token(TOK_SUM, atributo, linha, coluna_inicio);
             break;
 
         case 15:
-            token(TOK_SUB, atributo);
+            token(TOK_SUB, atributo, linha, coluna_inicio);
             break;
 
         case 18:
-            token(TOK_DIV, atributo);
+            token(TOK_DIV, atributo, linha, coluna_inicio);
             break;
 
         case 49:
-            token(TOK_MUL, atributo);
+            token(TOK_MUL, atributo, linha, coluna_inicio);
             break;
 
         case 50:
-            token(TOK_EXP, atributo);
+            token(TOK_EXP, atributo, linha, coluna_inicio);
             break;
 
         case 67:

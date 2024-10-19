@@ -11,9 +11,11 @@
                 "analex/analex.cpp",
                 "analex/tabela_simbolos.cpp",
                 "gera_tabela_dt/tabela.cpp",
-                "analex/anasin.cpp",
+                "anasin/tree.cpp",
+                "anasin/first_follow.cpp",
+                "anasin/anasin.cpp",
                 "-o",
-                "analex/anasin"
+                "anasin/anasin"
             ],
             "group": "build",
             "problemMatcher": [

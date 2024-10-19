@@ -23,9 +23,11 @@ Token tok;
 
 hash_table tabela_simbolos;
 
-Token *token(int tipo, const std::string &atributo) {
+Token *token(int tipo, const std::string &atributo, int linha, int coluna) {
     tok.tipo = tipo;
     tok.atributo = atributo;
+    tok.linha = linha;
+    tok.coluna = coluna;
 
     return &tok;
 }
@@ -51,12 +53,12 @@ void setID(const std::string &lexema) {
     unsigned int indice = tabela_simbolos.hash(lexema);
 
     if(reg != nullptr) {
-        token(TOK_ID, std::to_string(indice));
+        token(TOK_ID, std::to_string(indice), linha, coluna_inicio);
     }
     else {
         registro reg = { .lexema=lexema, .tipo=TOK_ID, .tipo_dado="" };
         tabela_simbolos.inserir(lexema, reg);
-        token(TOK_ID, std::to_string(indice));
+        token(TOK_ID, std::to_string(indice), linha, coluna_inicio);
     }
 }
 
@@ -65,7 +67,7 @@ void setInt(const std::string &lexema) {
     unsigned int indice = tabela_simbolos.hash(lexema);
     
     if(reg != nullptr) {
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
     else {
         vlr valor = { .valor_int=std::stoi(lexema) };
@@ -74,7 +76,7 @@ void setInt(const std::string &lexema) {
 
         tabela_simbolos.inserir(lexema, reg);
 
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
 }
 
@@ -83,7 +85,7 @@ void setFloat(const std::string &lexema) {
     unsigned int indice = tabela_simbolos.hash(lexema);
 
     if(reg != nullptr) {
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
     else {
         vlr valor = { .valor_float=std::stof(lexema) };
@@ -92,7 +94,7 @@ void setFloat(const std::string &lexema) {
 
         tabela_simbolos.inserir(lexema, reg);
 
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
 
 }
@@ -103,7 +105,7 @@ void setExp(const std::string &lexema) {
     unsigned int indice = tabela_simbolos.hash(lexema);
 
     if(reg != nullptr) {
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
     else {
         std::string parte_nominal;
@@ -128,7 +130,7 @@ void setExp(const std::string &lexema) {
 
         tabela_simbolos.inserir(lexema, reg);
 
-        token(TOK_CONST_NUM, std::to_string(indice));
+        token(TOK_CONST_NUM, std::to_string(indice), linha, coluna_inicio);
     }
 }
 
@@ -137,14 +139,14 @@ void setChar(const std::string &lexema) {
     unsigned int indice = tabela_simbolos.hash(lexema);
 
     if(reg != nullptr) {
-        token(TOK_CONST_CHAR, std::to_string(indice));
+        token(TOK_CONST_CHAR, std::to_string(indice), linha, coluna_inicio);
     }
     else {
         registro reg = { .lexema=lexema, .tipo=TOK_CONST_CHAR, .tipo_dado="char" };
 
         tabela_simbolos.inserir(lexema, reg);
 
-        token(TOK_CONST_CHAR, std::to_string(indice));
+        token(TOK_CONST_CHAR, std::to_string(indice), linha, coluna_inicio);
     }
 }
 
@@ -154,7 +156,7 @@ void restart() {
 
 void erro(void) {
     std::cout << "Transição não prevista - token não reconhecido: " << Lexema << ".\n";
-    token(ERRO, "-");
+    token(ERRO, "-", linha, coluna_inicio);
 }
 
 std::string string_tipo(int tipo) {
@@ -271,6 +273,10 @@ std::string string_tipo(int tipo) {
         case TOK_CONST_NUM:
             tipo_s = "TOK_CONST_NUM";
             break;
+        
+        case TOK_FIM_ARQ:
+            tipo_s = "$";
+            break;
 
         default:
             tipo_s = "ERRO";
@@ -290,8 +296,8 @@ Token *retorna_token(void) {
         c = proximo_char();
 
         if(c == EOF) {
-            std::cout << "Fim do scanner.\n";
-            return nullptr;
+            token(TOK_FIM_ARQ, "-", linha, coluna_inicio);
+            return &tok;
         }
 
         s = mover(s, c);

@@ -36,7 +36,8 @@ enum {
     TOK_EXP,
     TOK_CONST_CHAR,
     TOK_CONST_NUM,
-    ERRO
+    ERRO,
+    TOK_FIM_ARQ,
 };
 
 extern std::string Lexema;
@@ -44,11 +45,13 @@ extern std::string Lexema;
 typedef struct {
     int tipo;
     std::string atributo;
+    int linha;
+    int coluna;
 } Token;
 
 extern Token tok;
 
-extern Token *token(int tipo, const std::string &atributo);
+extern Token *token(int tipo, const std::string &atributo, int linha, int coluna);
 
 extern Token *retorna_token();
 
