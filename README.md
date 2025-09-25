@@ -1,6 +1,6 @@
 # 🛠️ Analisador Léxico e Analisador Sintático de um Compilador
 
-> Este projeto implementa o **analisador léxico** (ou scanner) de um compilador para uma linguagem simplificada. O analisador léxico é uma das primeiras fases de um compilador e é responsável por ler o código-fonte de entrada e convertê-lo em uma sequência de tokens que serão utilizados pelas próximas fases do compilador.<br>O projeto também conta com a implementação de um **analisador sintático** (ou parser), sendo responsável por verificar se a estrutura dos tokens de um arquivo de entrada está escrito de acordo com as especificações da linguagem.
+> Este **projeto** implementa o **analisador léxico** (ou scanner) de um compilador para uma linguagem simplificada. O analisador léxico é uma das primeiras fases de um compilador e é responsável por ler o código-fonte de entrada e convertê-lo em uma sequência de tokens que serão utilizados pelas próximas fases do compilador.<br>O projeto também conta com a implementação de um **analisador sintático** (ou parser), sendo responsável por verificar se a estrutura dos tokens de um arquivo de entrada está escrito de acordo com as especificações da linguagem.
 
 
 ## 🧩 Estrutura do Compilador
